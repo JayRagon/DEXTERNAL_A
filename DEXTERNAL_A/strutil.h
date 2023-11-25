@@ -11,6 +11,7 @@
 
 void h2aob(char* hex, char* output, size_t reslen)
 {
+    // im sure you can figure out how this works
     for (size_t i = 0; i < reslen * 2; i += 2)
     {
         char hexbyte[3] = { hex[i], hex[i + 1], '\0' };
@@ -20,6 +21,7 @@ void h2aob(char* hex, char* output, size_t reslen)
 
 void aob2h(char* aob, char* hex, size_t aoblen) {
     for (size_t i = 0; i < aoblen; ++i) {
+        // dude i don't even know chatgpt just cooked this up
         sprintf_s(hex + i * 2, 3, "%02X", static_cast<unsigned char>(aob[i]));
     }
 }
@@ -34,6 +36,7 @@ bool b16(std::string ed)
             return false;
         }
     }
+    // if (all chararacters are hex) return true;
     return true;
 }
 

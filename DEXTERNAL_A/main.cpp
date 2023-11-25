@@ -3,10 +3,11 @@
 
 
 
-// i had to re-write the entire code because i had some stuff like the b16 function returning true if it wasn't b16...
-// and also this random buffers that were not necessary
-// so yeah i re-wrote it so that you could actually read it
+// i had to re-write the entire code because i had some stuff like the b16 function returning true if it wasn't b16... (i built my code around that instead of reversing it)
+// and also there were random buffers that were not necessary
+// anyway so yeah i re-wrote it so that you could actually read it
 
+/// if you just want the message spoofing part i have a MessageSpoofer repo so go see that
 
 
 #define keydown 0
@@ -25,11 +26,11 @@ int main()
 
 	for (;;)
 	{
-		std::string ed;
 
 		// should probably remove sleep because two keys have a higher chance to be the same, but it uses an entire thread constantly
 		while (!GetAsyncKeyState(KEYBIND)) { Sleep(3); }
 
+		// cpy highlighted text
 		inject(VK_CONTROL, keydown);
 		Sleep(10);
 		inject('c' - 0x20, keydown);
@@ -38,7 +39,7 @@ int main()
 		Sleep(10);
 		inject(VK_CONTROL, keyup);
 
-		ed = ReadClipboard();
+		std::string ed = ReadClipboard();
 
 		bool isB16 = b16(ed);
 
