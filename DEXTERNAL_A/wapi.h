@@ -4,6 +4,17 @@
 #include <TlHelp32.h>
 #include <Psapi.h>
 
+
+// YO! YO! YO! 
+// Dis is where da window's api is AT fam
+// Basically, how we replacin' the strings, is we find the discord.exe that uses the highest ram
+// N' then we scan fo' da string
+// But be careful homie! There are usually ~10 strings lyin' around, and one of them is the real string.
+// I ain't figurin' out which one real, discord be trippn' if you wanna find the real one go try
+// Anyway, I just replacin' all of 'em
+// Das it. Das all there is to it.
+
+
 #define ADDR_MAX 30
 
 int largestram = 0;
@@ -193,3 +204,4 @@ void ReplaceMsg(std::string messagetochange, std::string changeto)
 
     delete[] addrarr;
 }
+

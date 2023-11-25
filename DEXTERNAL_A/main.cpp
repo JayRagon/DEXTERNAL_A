@@ -1,6 +1,14 @@
 #include "wapi.h"
 #include "strutil.h"
 
+
+
+// i had to re-write the entire code because i had some stuff like the b16 function returning true if it wasn't b16...
+// and also this random buffers that were not necessary
+// so yeah i re-wrote it so that you could actually read it
+
+
+
 #define keydown 0
 #define keyup 2
 
@@ -19,6 +27,7 @@ int main()
 	{
 		std::string ed;
 
+		// should probably remove sleep because two keys have a higher chance to be the same, but it uses an entire thread constantly
 		while (!GetAsyncKeyState(KEYBIND)) { Sleep(3); }
 
 		inject(VK_CONTROL, keydown);
@@ -49,6 +58,7 @@ int main()
 
 			hexadecimal[hexlen] = 0;
 
+			// generate a "random" key (it's just hashing the time elapsed...)
 			char* key = new char[keylen + 1];
 			for (size_t i = 0; i < keylen; i++) 
 			{
@@ -82,6 +92,8 @@ int main()
 			
 			WriteClipboard((const char*)resultbuffer);
 
+
+			// pastes (i love pasting) and presses enter for you!
             inject(VK_CONTROL, keydown);
             Sleep(10);
             inject('v' - 0x20, keydown);
@@ -101,7 +113,7 @@ int main()
 			delete[] hexadecimal;
 			delete[] encryptme;
 		}
-		else if (isB16 == true) // if b16 then we decrypt
+		else if (isB16 == true) // if b16 then we decrypt fam
 		{
 			size_t recbufferlen = ed.length();
 			char* recbuffer = new char[ed.length() + 1];
