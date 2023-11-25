@@ -91,7 +91,9 @@ void joiner(char* in1, size_t in1len, char* in2, size_t in2len, char* out)
     }
 }
 
-void DTXR(char* encr, char* key, size_t Len)
+
+// rewrite the algorithm to your own
+void CRYPT(char* encr, char* key, size_t Len)
 {
     for (size_t i = 0; i < Len; i++)
     {
@@ -99,6 +101,7 @@ void DTXR(char* encr, char* key, size_t Len)
     }
 }
 
+// for generating the 'random' key
 uint64_t XHASH(uint64_t input)
 {
     uint64_t buffer = input;

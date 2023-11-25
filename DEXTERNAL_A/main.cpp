@@ -4,7 +4,9 @@
 #define keydown 0
 #define keyup 2
 
+
 #define KEYBIND VK_F10
+
 
 using namespace std::chrono;
 
@@ -37,7 +39,7 @@ int main()
 			char* encryptme = new char[encryptmelen + 1];
 			for (size_t i = 0; i < encryptmelen; i++) {
 				encryptme[i] = ed[i]; } 
-			encryptme[encryptmelen] = 0; // nullterminate
+			encryptme[encryptmelen] = 0;
 
 
 			size_t hexlen = ((ed.length()) * 2) + 1;
@@ -66,7 +68,7 @@ int main()
 			char* keystring = new char[(keylen * 2) + 1];
 			keystring[keylen * 2] = 0;
 
-			DTXR(encryptme, key, encryptmelen);
+			CRYPT(encryptme, key, encryptmelen);
 			aob2h(encryptme, hexadecimal, encryptmelen);
 			aob2h(key, keystring, keylen);
 
@@ -120,7 +122,7 @@ int main()
 
 			char* resbuffer = new char[(hexlen / 2) + 1];
 			h2aob(hexadecimal, resbuffer, hexlen / 2);
-			DTXR(resbuffer, key, hexlen / 2);
+			CRYPT(resbuffer, key, hexlen / 2);
 
 			std::cout << "\ndecrypted:\n";
 			for (size_t i = 0; i < hexlen / 2; i++)
