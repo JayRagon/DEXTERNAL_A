@@ -59,7 +59,7 @@ int main()
 			hexadecimal[hexlen] = 0;
 
 			// generate a "random" key (it's just hashing the time elapsed...)
-			char* key = new char[keylen + 1];
+			char key[keylen + 1] = {};
 			for (size_t i = 0; i < keylen; i++) 
 			{
 				auto finish = std::chrono::high_resolution_clock::now();
@@ -109,7 +109,6 @@ int main()
 
 			delete[] keystring;
 			delete[] resultbuffer;
-			delete[] key;
 			delete[] hexadecimal;
 			delete[] encryptme;
 		}
